@@ -5,7 +5,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="scroll-smooth snap-y snap-mandatory h-screen overflow-scroll">
-      
+      <Header />
 
       <section id="accueil" className="snap-start h-screen bg-blue-500 flex items-center justify-center">
         <h1 className="text-5xl text-white">Accueil</h1>
