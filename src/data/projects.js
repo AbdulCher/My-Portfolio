@@ -19,7 +19,7 @@ const projects = [
     description:
       "Développement d’un portfolio d’architecte avec gestion dynamique des galeries et modales via JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
-    image: "/assets/sophiebluel.png",
+    image: "/img/sophiebluel.png",
     context:
       "Projet de manipulation du DOM et de gestion d’interfaces dynamiques.",
     objectives:
@@ -33,7 +33,7 @@ const projects = [
     description:
       "Refonte complète d’un site de location immobilière en React. Création de composants, routage et gestion de données JSON.",
     stack: ["React", "Vite", "CSS Modules"],
-    image: "/assets/Kasa.png",
+    image: "/img/Kasa.png",
     context:
       "Projet d’apprentissage React : architecture en composants, props et routing.",
     objectives:

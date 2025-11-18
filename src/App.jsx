@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "./components/Header";
-import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Projects from "./components/sections/Projects";
+import Hero from "./sections/Home";
+import About from "./sections/About";
+import Works from "./sections/Works";
 
 
 
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <Projects />
+      <Works />
     </div>
   );
 }

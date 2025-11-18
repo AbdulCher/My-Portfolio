@@ -1,21 +1,42 @@
-
-
-export default function ProjectCard({ title, description, image, stack, context, objectives, results }) {
+export default function ProjectCard({
+  title,
+  description,
+  image,
+  stack,
+  context,
+  objectives,
+  results
+}) {
   return (
-    <article className="project-card">
-      <img src={image} alt={title} className="project-img" />
-      <div className="project-content">
-        <h3>{title}</h3>
-        <p className="project-description">{description}</p>
-        <ul className="project-stack">
+    <article className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition p-4">
+      <img src={image} alt={title} className="w-full h-48 object-cover rounded-lg" />
+
+      <div className="mt-4">
+        <h3 className="text-xl font-semibold">{title}</h3>
+
+        <p className="text-gray-600 mt-2">{description}</p>
+
+        <ul className="flex flex-wrap gap-2 mt-4">
           {stack.map((tech, index) => (
-            <li key={index}>{tech}</li>
+            <li
+              key={index}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700"
+            >
+              {tech}
+            </li>
           ))}
         </ul>
-        <div className="project-details">
-          <p><strong>Contexte :</strong> {context}</p>
-          <p><strong>Objectifs :</strong> {objectives}</p>
-          <p><strong>Résultats :</strong> {results}</p>
+
+        <div className="mt-4 text-sm text-gray-700 space-y-2">
+          <p>
+            <strong>Contexte :</strong> {context}
+          </p>
+          <p>
+            <strong>Objectifs :</strong> {objectives}
+          </p>
+          <p>
+            <strong>Résultats :</strong> {results}
+          </p>
         </div>
       </div>
     </article>
