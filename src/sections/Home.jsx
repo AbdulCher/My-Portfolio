@@ -11,38 +11,46 @@ export default function Home() {
   return (
     <section
       id="accueil"
-      className="snap-start h-screen bg-gray-900 flex flex-col lg:flex-row items-center justify-between p-6 lg:px-16 relative"
+      className="snap-start h-screen bg-gray-900 flex flex-col lg:flex-row items-center justify-center p-6 lg:px-16 gap-10"
     >
-      {/* Texte principal animé */}
+      {/* Texte (Desktop à gauche, Mobile en haut) */}
       <motion.div
-        className="mb-6 lg:mb-0"
-        animate={{ x: 100 }}
+        className="flex flex-col lg:items-start items-center text-center lg:text-left space-y-6 lg:flex-1"
+        animate={{ x: 0 }}
+        initial={{ x: -50 }}
         transition={transition}
       >
-        <h1 className="text-5xl text-white leading-tight">
+        <h1 className="text-5xl lg:text-6xl text-white font-bold leading-tight">
+          
+          Intégrateur web
+        </h1>
+
+        <h2 className="text-3xl lg:text-4xl text-white font-semibold">
           NNNNNN<br />
           NNNNN<br />
           NNNNN
-        </h1>
+        </h2>
+
+        <p className="text-white text-lg lg:text-xl leading-relaxed max-w-md">
+          Je transforme des maquettes Figma en sites web modernes et responsives.
+          Curieux et rigoureux, j’aime relever des défis techniques et concevoir
+          des interfaces élégantes et fonctionnelles.
+        </p>
       </motion.div>
 
-      {/* Image animée */}
+      {/* Image (Desktop à droite, Mobile après h2) */}
       <motion.div
-        className="mb-6 lg:mb-0"
-        animate={{ x: -100 }}
+        className="lg:flex-1 flex justify-center items-center"
+        animate={{ x: 0 }}
+        initial={{ x: 50 }}
         transition={transition}
       >
         <img
           src="/img/profile.jpg"
           alt="Profil"
-          className="h-60 w-60 object-cover rounded-full"
+          className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg"
         />
       </motion.div>
-
-      {/* Texte secondaire */}
-      <div className="absolute top-10 left-10 text-white">
-        <h2 className="text-6xl lg:text-8xl font-bold">Intégrateur web</h2>
-      </div>
     </section>
   );
 }
