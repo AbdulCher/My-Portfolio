@@ -1,6 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
+import Home from "../sections/Home";
 
 function Particles() {
   const pointsRef = useRef();
@@ -40,6 +41,7 @@ function Particles() {
 
 export default function ParticleBackground() {
   return (
+    
     <Canvas
   className="fixed inset-0 -z-10"
   camera={{ position: [0, 0, 18], fov: 75 }}

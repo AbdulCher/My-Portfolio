@@ -1,56 +1,84 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Header from "../components/Header";
+import SpinningCube from "../components/SpinningCube";
 
-const transition = {
-  duration: 0.8,
-  delay: 0.5,
-  ease: [0, 0.71, 0.2, 1.01],
-};
+
+const text = "Intégrateur web";
 
 export default function Home() {
   return (
-    <section
-      id="accueil"
-      className="snap-start h-screen bg-gray-900 flex flex-col lg:flex-row items-center justify-center p-6 lg:px-16 gap-10"
+   <section
+  id="accueil"
+  className="snap-start flex flex-col bg-gray-950 items-center justify-between min-h-screen p-6 lg:px-16"
+>
+  {/* Bloc Texte + Image */}
+  <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-10 mt-8">
+    {/* Texte */}
+    <motion.div className="flex flex-col lg:items-start items-center text-center lg:text-left space-y-6 lg:flex-1">
+      <motion.h1
+      className="text-5xl lg:text-6xl text-gray-400 font-bold leading-tight flex flex-wrap justify-center lg:justify-start"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: { transition: { staggerChildren: 0.35 } }, // temps entre chaque lettre
+      }}
+>
+  {text.split("").map((char, index) => (
+    <motion.span
+      key={index}
+      variants={{
+        hidden: { opacity: 0, y: -20 },
+        visible: { opacity: 1, y: 0 },
+      }}
     >
-      {/* Texte (Desktop à gauche, Mobile en haut) */}
-      <motion.div
-        className="flex flex-col lg:items-start items-center text-center lg:text-left space-y-6 lg:flex-1"
-        animate={{ x: 0 }}
-        initial={{ x: -50 }}
-        transition={transition}
-      >
-        <h1 className="text-5xl lg:text-6xl text-white font-bold leading-tight">
-          
-          Intégrateur web
-        </h1>
+      {char === " " ? "\u00A0" : char}
+    </motion.span>
+  ))}
+</motion.h1>
 
-        <h2 className="text-3xl lg:text-4xl text-white font-semibold">
-          NNNNNN<br />
-          NNNNN<br />
-          NNNNN
-        </h2>
+      <h2 className="text-3xl lg:text-4xl text-gray-400 font-semibold">
+        NNNNNN<br />
+        NNNNN<br />
+        NNNNN
+      </h2>
 
-        <p className="text-white text-lg lg:text-xl leading-relaxed max-w-md">
-          Je transforme des maquettes Figma en sites web modernes et responsives.
-          Curieux et rigoureux, j’aime relever des défis techniques et concevoir
-          des interfaces élégantes et fonctionnelles.
-        </p>
-      </motion.div>
+      <p className="text-gray-400 text-lg lg:text-xl leading-relaxed max-w-md">
+        Je transforme des maquettes Figma en sites web modernes et responsives.
+        Curieux et rigoureux, j’aime relever des défis techniques et concevoir
+        des interfaces élégantes et fonctionnelles.
+      </p>
+    </motion.div>
 
-      {/* Image (Desktop à droite, Mobile après h2) */}
-      <motion.div
-        className="lg:flex-1 flex justify-center items-center"
-        animate={{ x: 0 }}
-        initial={{ x: 50 }}
-        transition={transition}
-      >
-        <img
-          src="/img/profile.jpg"
-          alt="Profil"
-          className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg"
-        />
-      </motion.div>
-    </section>
+    {/* Image */}
+    <motion.div className="lg:flex-1 flex justify-center items-center max-w-md">
+      <img
+        src="/img/profile.jpg"
+        alt="Profil"
+        className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg"
+      />
+    </motion.div>
+  </div>
+
+  {/* Boutons */}
+  <div className="flex flex-row gap-4 mt-8 justify-center">
+    <a href="#projets" className="px-6 py-2 border-2 border-white text-white rounded hover:text-blue-500 transition">
+      Projets
+    </a>
+    <a href="#apropos" className="px-6 py-2 border-2 border-white text-white rounded hover:text-blue-500 transition">
+      À propos
+    </a>
+    <a href="#contact" className="px-6 py-2 border-2 border-white text-white rounded hover:text-blue-500 transition">
+      Contact
+    </a>
+  </div>
+
+  {/* Cube */}
+  <div className="w-full flex justify-center mt-8 lg:mt-12" style={{ height: "300px" }}>
+    <SpinningCube />
+  </div>
+</section>
+
+
   );
 }
