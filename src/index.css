@@ -1,4 +1,14 @@
 @import "tailwindcss";
-.v{
-    color: #00060f;
+
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+@theme {
+  --font-title: "saira", sans-serif;
+  --font-body: "Montserrat", sans-serif;
+}
+body {
+  font-family: var(--font-body);
+  background-color: #f9f9f9;
+  color: #0d141f;
+  margin: 0;
+  padding: 0;
 }

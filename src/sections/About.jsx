@@ -20,7 +20,7 @@ export default function About() {
       {/* Cards */}
       <div className="w-full max-w-6xl grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
         <AnimatedCard direction="right" delay={0.20}>
-        <div className="text-[#0D141F] rounded-lg hover:shadow-xl transition p-4 shadow-lg shadow-[#87a330] flex flex-col items-center">
+        <div className="text-[#023047] rounded-lg hover:shadow-xl transition p-4 shadow-lg shadow-[#fb8500] flex flex-col items-center">
           <img 
             src="/img/bookitop.png"
             alt="Projet Booki"
@@ -33,7 +33,7 @@ export default function About() {
         </div>
       </AnimatedCard>
       <AnimatedCard direction="up" delay={0.3}>
-        <div className="text-[#0D141F] rounded-lg overflow-hidden hover:shadow-xl transition p-4 shadow-lg shadow-[#87a330] flex flex-col items-center">
+        <div className="text-[#023047] rounded-lg overflow-hidden hover:shadow-xl transition p-4 shadow-lg shadow-[#fb8500] flex flex-col items-center">
           <img
             src="/img/homesophie.png"
             alt="Portfolio Sophie Bluel"
@@ -45,7 +45,7 @@ export default function About() {
         </div>
       </AnimatedCard>
       <AnimatedCard direction="left" delay={0.20}>
-        <div className="text-[#0D141F] rounded-lg hover:shadow-xl transition p-4 shadow-lg shadow-[#87a330] flex flex-col items-center">
+        <div className="text-[##023047] rounded-lg hover:shadow-xl transition p-4 shadow-lg shadow-[#fb8500] flex flex-col items-center">
           <img
             src="/img/Kasalogement.png"
             alt="Projet Kasa"
@@ -61,7 +61,7 @@ export default function About() {
       {/* Bouton */}
       <a
         href="#projets"
-        className="bg-[#80aae1] mt-6 inline-block px-6 py-2 border-2 border-[#154467] text-white rounded hover:text-blue-500 transition"
+        className="bg-[#8ecae6] mt-6 inline-block px-6 py-2 text-[#023047] rounded hover:text-[#fb8500] transition"
       >
         Mes projets →
       </a>
