@@ -1,30 +1,31 @@
+import { useState } from "react";
 import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
+import ProjectModal from "../components/ProjectModal";
 
 export default function Works() {
+  const [modalProject, setModalProject] = useState(null);
+
   return (
-    <section
-      id="projets"
-      className="snap-start min-h-screen w-full py-20 px-6 lg:px-20
-        bg-gray-/10
-        flex flex-col items-center"
-    >
-      {/* Titre */}
-      <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[#0D141F] text-center">
-        Mes Projets
-      </h2>
+    <section id="projets" className="snap-start w-full bg-gray/10 flex flex-col items-center justify-center p-6 lg:px-16 py-36">
+      <h2 className="text-3xl font-bold mb-8 text-gray-300">Mes Projets</h2>
 
-      {/* Description */}
-      <p className="text-[#0D141F] mb-12 text-center lg:text-center max-w-3xl text-lg lg:text-xl">
-        Découvrez mes principales réalisations en développement web. Chaque projet montre mon travail sur HTML, CSS, JavaScript et React.
-      </p>
-
-      {/* Grid des projets */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <ProjectCard key={project.id} {...project} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            onOpen={setModalProject}
+          />
         ))}
       </div>
+
+      {modalProject && (
+        <ProjectModal
+          project={modalProject}
+          onClose={() => setModalProject(null)}
+        />
+      )}
     </section>
   );
 }
