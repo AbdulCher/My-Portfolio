@@ -10,7 +10,7 @@ const text = "DEVELOPPEUR WEB";
 
 export default function Home() {
   return (
-    <motion.section id="accueil" className="snap-start bg-[#023047] flex flex-col items-center justify-between min-h-screen p-6 lg:px-16 py-10">
+    <motion.section id="accueil" className="mt-28 snap-start bg-[#023047] flex flex-col items-center justify-between min-h-screen p-6 lg:px-16 py-10">
 
       <ParticleNetwork />
 
@@ -22,7 +22,7 @@ export default function Home() {
 
         <motion.div className="flex flex-col lg:items-start items-center text-center lg:text-left space-y-6 lg:flex-1">
           
-          <motion.h1 className="text-5xl lg:text-6xl text-[#fb8500] font-bold leading-tight flex flex-wrap justify-center lg:justify-start"
+          <motion.h1 className="mt-10 text-5xl lg:text-6xl text-[#fb8500] font-bold leading-tight flex flex-wrap justify-center lg:justify-start"
             initial="hidden"
             animate="visible"
             variants={{
@@ -70,14 +70,14 @@ export default function Home() {
 
         {/* Boutons */}
 
-      <div className="flex flex-row gap-4 mt-8 justify-center">
-        <a href="#projets" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#fb8500] transition">
+      <div className="flex flex-row gap-4 mt-6 justify-center">
+        <a href="#projets" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#ffb703] transition">
           GitHub
         </a>
-        <a href="#apropos" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#fb8500] transition">
+        <a href="#apropos" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#ffb703] transition">
           Linkedin
         </a>
-        <a href="#contact" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#fb8500] transition">
+        <a href="#contact" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#ffb703] transition">
           Contact
         </a>
       </div>

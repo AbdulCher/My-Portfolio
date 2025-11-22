@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import ParticleNetwork from "../animate/ParticleNetwork";
+
 
 export default function Skills() {
   const skills = [
@@ -30,9 +32,9 @@ export default function Skills() {
   return (
     <section
       id="competences"
-      className="snap-start h-screen w-full
-      flex flex-col items-center justify-center p-6 lg:px-16 text-white"
+      className="relative snap-start w-full bg-[#023047] flex flex-col items-center justify-center p-6 lg:px-16 py-36"
     >
+      <ParticleNetwork />
       <h2 className="text-3xl font-bold mb-10">Compétences</h2>
 
       <div className="relative flex items-center justify-center">

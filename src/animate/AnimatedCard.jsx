@@ -7,10 +7,10 @@ export default function AnimatedCard({
   className = ""
 }) {
   const directions = {
-    up: { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } },
-    down: { hidden: { opacity: 0, y: -40 }, visible: { opacity: 1, y: 0 } },
-    left: { hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0 } },
-    right: { hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0 } }
+    up: { hidden: { opacity: 0, y: 80 }, visible: { opacity: 1, y: 10 } },
+    down: { hidden: { opacity: 0, y: -80 }, visible: { opacity: 1, y: 10 } },
+    left: { hidden: { opacity: 0, x: 80 }, visible: { opacity: 1, x: 10 } },
+    right: { hidden: { opacity: 0, x: -80 }, visible: { opacity: 1, x: 10 } }
   };
 
   return (
