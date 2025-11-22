@@ -6,28 +6,31 @@ import Works from "./sections/Works";
 import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
 import { Canvas } from "@react-three/fiber";
+import { useState } from "react";
+import LoaderScreen from "./animate/LoaderScreen";
 
 import ParticleBackground from "./components/ParticleBackground";
 
 
+export default function App() {
+  const [loading, setLoading] = useState(true);
 
-
-function App() {
   return (
-    <div className="relative">
-      
+    <>
+      {loading && <LoaderScreen onFinish={() => setLoading(false)} />}
 
-      <div className="scroll-smooth snap-y snap-mandatory h-screen overflow-scroll">
-        <Header />
-        <Home />
-        <About />
-        <Works />
-        <Skills />
-        <Contact />
-      </div>
-    </div>
+      {!loading && (
+        <div className="relative">
+          <div className="scroll-smooth snap-y snap-mandatory h-screen overflow-scroll">
+            <Header />
+            <Home />
+            <About />
+            <Works />
+            <Skills />
+            <Contact />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
-
-
-export default App;
