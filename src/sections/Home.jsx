@@ -10,7 +10,7 @@ const text = "DEVELOPPEUR WEB";
 
 export default function Home() {
   return (
-    <motion.section id="accueil" className="mt-28 snap-start bg-[#023047] flex flex-col items-center justify-between min-h-screen p-6 lg:px-16 py-10">
+    <motion.section id="accueil" className="mt-28 snap-start bg-[#000000] flex flex-col items-center justify-between min-h-screen p-6 lg:px-16 py-10">
 
       <ParticleNetwork />
 
@@ -22,7 +22,7 @@ export default function Home() {
 
         <motion.div className="flex flex-col lg:items-start items-center text-center lg:text-left space-y-6 lg:flex-1">
           
-          <motion.h1 className="mt-10 text-5xl lg:text-6xl text-[#fb8500] font-bold leading-tight flex flex-wrap justify-center lg:justify-start"
+          <motion.h1 className="mt-10 text-5xl lg:text-6xl text-[#e5e5e5] font-bold leading-tight flex flex-wrap justify-center lg:justify-start"
             initial="hidden"
             animate="visible"
             variants={{
@@ -43,11 +43,11 @@ export default function Home() {
           <motion.h2 className="border-transparent rounded-md px-2 py-2 inline-block">
             <AnimatedText
               text={"NDIAYE\nCHEIKH\nABDUL!"}
-              className="whitespace-pre-line text-3xl lg:text-4xl text-[#fb8500] font-bold"
+              className="whitespace-pre-line text-3xl lg:text-4xl text-[#e5e5e5] font-bold"
             />
           </motion.h2>
 
-          <motion.p className="px-2 text-[#fb8500] bg-[#023047]/40 text-lg lg:text-xl leading-relaxed max-w-2xl">
+          <motion.p className="px-2 text-[#e5e5e5] text-lg lg:text-xl leading-relaxed max-w-2xl">
             Je transforme des maquettes Figma en sites web modernes et responsives.
             Curieux et rigoureux, j’aime relever des défis techniques et concevoir
             des interfaces élégantes et fonctionnelles.
@@ -70,14 +70,14 @@ export default function Home() {
 
         {/* Boutons */}
 
-      <div className="bg-[#023047] flex flex-row gap-4 mt-6 justify-center">
-        <a href="#projets" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#ffb703] transition">
+      <div className="flex flex-row gap-4 mt-6 justify-center">
+        <a href="#projets" className="bg-[#14213d] px-6 py-2 text-[#e5e5e5] rounded hover:bg-[#fca311] hover:text-[#000000] transition">
           GitHub
         </a>
-        <a href="#apropos" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#ffb703] transition">
+        <a href="#apropos" className="bg-[#14213d] px-6 py-2 text-[#e5e5e5] rounded hover:bg-[#fca311] hover:text-[#000000] transition">
           Linkedin
         </a>
-        <a href="#contact" className="bg-[#8ecae6] px-6 py-2 text-[#023047] rounded hover:bg-[#ffb703] transition">
+        <a href="#contact" className="bg-[#14213d] px-6 py-2 text-[#e5e5e5] rounded hover:bg-[#fca311] hover:text-[#000000] transition">
           Contact
         </a>
       </div>

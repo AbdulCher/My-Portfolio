@@ -27,8 +27,8 @@ export default function Skills() {
     Langages: [
       { name: "React.js", icon: "/img/icons/react.svg", color: "#61DAFB" },
       { name: "HTML5", icon: "/img/icons/html5.svg", color: "#fffff" },
+      { name: "CSS3", icon: "/img/icons/css.svg" },
       { name: "JavaScript (ES6+)", icon: "/img/icons/javascript.svg", color: "#F7DF1E" },
-      { name: "CSS3", icon: "/img/icons/css3.svg" },
     ],
 
     Frameworks: [
@@ -70,7 +70,7 @@ export default function Skills() {
     <section
       id="competences"
       ref={ref}
-      className="relative snap-start w-full bg-[#023047] flex flex-col items-center justify-center p-6 lg:px-16 py-36"
+      className="relative snap-start w-full bg-[#000000] flex flex-col items-center justify-center p-6 lg:px-16 py-36"
     >
       <ParticleNetwork />
 
