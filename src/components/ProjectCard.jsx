@@ -9,7 +9,7 @@ export default function ProjectCard({ project, onOpen }) {
         alt={project.title}
         className="w-full h-44 object-cover border-4 border-[#fb8500]"
       />
-      <div className="absolute inset-0 bg-[#000000]/90 border-8 border-[#fb8500] text-[#e5e5e5] opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+      <div className="absolute inset-0 bg-[#000000]/70 border-8 border-[#fb8500] text-[#e5e5e5] opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
         <h3 className="text-2xl font-bold">{project.title}</h3>
         {project.stack && <p className="text-1xl font-medium opacity-90">{project.stack}</p>}
       </div>

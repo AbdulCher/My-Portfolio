@@ -63,7 +63,7 @@ function RotatingCube() {
 
 export default function SpinningCube() {
   return (
-    <div style={{ width: "100%", height: "230px" }}>
+    <div style={{ width: "100%", height: "200px" }}>
       <Canvas camera={{ position: [3, 3, 3] }}>
         <ambientLight intensity={0.9} />
         <pointLight position={[10, 10, 10]} />

@@ -8,8 +8,8 @@ export default function AnimatedText({ text, className = "" }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setReplay(false);
-      setTimeout(() => setReplay(true), 50);
-    }, 9000); // ⬅️ la durée avant que l’animation recommence
+      setTimeout(() => setReplay(true), 10);
+    }, 20000); // ⬅️ la durée avant que l’animation recommence
 
     return () => clearInterval(interval);
   }, []);
@@ -21,7 +21,7 @@ export default function AnimatedText({ text, className = "" }) {
       initial="hidden"
       animate="visible"
       variants={{
-        visible: { transition: { staggerChildren: 0.20 } }
+        visible: { transition: { staggerChildren: 0.10 } }
       }}
     >
       {letters.map((char, i) => (

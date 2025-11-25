@@ -15,6 +15,7 @@ export default function About() {
 
         {/* ------------ COLONNE GAUCHE ------------ */}
         <motion.div className="flex-1 text-left text-[#e5e5e5] flex flex-col justify-start pt-0">
+          
           <h2 className="text-4xl font-bold mb-4">À propos</h2>
 
           <p className="text-lg lg:text-xl leading-relaxed">

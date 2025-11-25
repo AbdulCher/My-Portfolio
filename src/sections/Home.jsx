@@ -4,11 +4,11 @@ import SpinningCube from "../animate/SpinningCube";
 import ParticleNetwork from "../animate/ParticleNetwork";
 
 const texts = [
-  "🖋DEVELOPPEUR WEB",
-  "🐱 CONÇOIS DES APP",
-  "🐵 ET DES SITES MODERNES",
-  "🚀 CONTACTEZ-MOI",
-  "💻 TRANSFORMEZ VOS IDÉES"
+  "_💻DEVELOPPEUR WEB",
+  "⌨ CONÇOIS DES APP",
+  "⚙ ET DES SITES MODERNES",
+  "🖋 CONTACTEZ-MOI",
+  "🪁 TRANSFORMEZ VOS IDÉES"
 ];
 
 export default function Home() {
@@ -57,7 +57,7 @@ export default function Home() {
             className="mt-10 text-5xl lg:text-6xl text-[#e5e5e5] font-bold leading-tight flex flex-wrap justify-center lg:justify-start"
             initial="hidden"
             animate="visible"
-            variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.10 } } }}
           >
             <span style={{ fontFamily: "inherit, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji" }}>
               {texts[currentIndex].split("").map((char, index) => (
@@ -98,15 +98,37 @@ export default function Home() {
         </motion.div>
 
         {/* Image */}
-        <motion.div className="lg:flex-1 flex justify-center items-center max-w-md">
+        <motion.div >
+        <motion.div initial={{ scale: 0 }} animate={{
+          scale: 1,
+          transition: { duration: 2 },
+        }} className="lg:flex-1 flex justify-center items-center max-w-md">
           <img
             src="/img/profile.jpg"
             alt="Profil"
             className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-lg"
           />
         </motion.div>
+        </motion.div>
       </motion.div>
-
+      {/* ---------- BOUTONS EN BAS ---------- */}
+      <div className="flex flex-row gap-4 mt-10 justify-center">
+        <motion.div
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.95 }}
+  onHoverStart={() => console.log('hover started!')}
+/>
+        <a href="#projets" className="bg-[#14213d] px-6 py-2 text-[#e5e5e5] rounded hover:bg-[#fca311] hover:text-[#000000] transition">
+          GitHub
+        </a>
+        <a href="#apropos" className="bg-[#14213d] px-6 py-2 text-[#e5e5e5] rounded hover:bg-[#fca311] hover:text-[#000000] transition">
+          Linkedin
+        </a>
+        <a href="#contact" className="bg-[#14213d] px-6 py-2 text-[#e5e5e5] rounded hover:bg-[#fca311] hover:text-[#000000] transition">
+          Contact
+        </a>
+      </div>
+<motion.div />
       {/* Cube */}
       <div className="w-full flex justify-center mt-8 lg:mt-12" style={{ height: "300px" }}>
         <SpinningCube size={100} />

@@ -1,4 +1,6 @@
 import ParticleBackground from "../components/ParticleBackground";
+import AnimatedText from "../animate/AnimatedText";
+
 export default function Contact() {
   return (
     <section
@@ -6,9 +8,20 @@ export default function Contact() {
       className="relative snap-start w-full bg-[#000000] flex flex-col items-center justify-center p-6 lg:px-16 py-36"
     >
       <h1 className="text-5xl font-bold text-gray-300 mb-6">Contact</h1>
-      <p className="text-gray-300 mb-6 text-center max-w-2xl">
-        Vous avez un projet ou une question ? Écrivez-moi !
-      </p>
+      <div className="text-gray-300 mb-6 text-center max-w-2xl">
+         <AnimatedText
+        text={
+          "👍Merci d'avoir visiter mon protfolio !\n"+
+          "Je poursuis en ce moment une formation Opencassroom\n"+
+          "pour devenir DEVELOPPEUR FULL-STACK\n"+
+          "Une question?\n"+
+          "Une idées?\n"+
+          "Contactez-moi !"
+        }
+        className="text-xl font-light text-[#e5e5e5] mb-6"
+      />
+
+      </div>
 
       <form
         id="contactForm"
@@ -60,7 +73,7 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="bg-orange-500 text-white font-semibold py-2 px-4 rounded hover:bg-orange-600 transition"
+          className="bg-[#d62828] text-white font-semibold py-2 px-4 rounded hover:bg-orange-600 transition"
         >
           Envoyer
         </button>
