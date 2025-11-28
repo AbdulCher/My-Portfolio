@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import MainPage from "./sections/MainPage";
 import Footer from "./components/Footer";
 
+
 export default function App() {
 
   useAOSInit();

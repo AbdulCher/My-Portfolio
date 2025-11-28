@@ -1,5 +1,3 @@
-
-
 import FondPortfolio from "../animate/BgPortfolio";
 import useAOS from "../hooks/useAOSInit";
 import Icons from "../components/Icons";
