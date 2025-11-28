@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AnimatedCard from "../animate/AnimatedCard";
+
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Header = () => {
@@ -10,13 +10,13 @@ const Header = () => {
       <nav className="max-w-6xl mx-auto flex justify-between items-center p-4">
 
         {/* LOGO */}
-        <AnimatedCard direction="left" delay={0.6}>
+       
           <div className="hover:animate-ping">
             <div className="text-2xl text-[#ff7d00] font-bold border-t-8 border-0">
               <strong className="text-1xl">@</strong>/////
             </div>
           </div>
-        </AnimatedCard>
+        
 
         {/* ----- MENU BURGER (mobile < md) ----- */}
         <div className="md:hidden">

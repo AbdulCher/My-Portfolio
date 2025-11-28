@@ -1,19 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaTwitter } from "react-icons/fa";
-import TypewriterText from "../animate/TypewriterText"; // chemin selon ton projet
-import TextFadeLoop from "../animate/TextFadeLoop";
+
+import Icons from "../components/Icons";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
   const [triggerText, setTriggerText] = useState(false);
-  const icons = [
-    { icon: <FaGithub />, link: "https://github.com" },
-    { icon: <FaLinkedin />, link: "https://linkedin.com" },
-    { icon: <FaEnvelope />, link: "mailto:contact@tonmail.com" },
-    { icon: <FaInstagram />, link: "https://instagram.com" },
-    { icon: <FaTwitter />, link: "https://twitter.com" },
-  ];
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,27 +27,12 @@ export default function Contact() {
             md:text-2xl xl:text-3xl lg:text-4xl 
             font-semibold">Contact</h2>
 
-      <motion.div
-        className="mb-4 text-center max-w-xl"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
-        onViewportEnter={() => setTriggerText(prev => !prev)} // inverser trigger à chaque scroll
-      >
-        <TypewriterText
-          text="Une question ou une idée? Utilisez ce formulaire ou les réseaux sociaux👇."
-          speed={90}
-          className="opacity-90 text-[#27818f] text-lg"
-          trigger={triggerText}
-        />
-      </motion.div>
+     <p>Une question ou une idée? Utilisez ce formulaire ou les réseaux sociaux👇.</p>
+        
         
       <div className="w-full max-w-3xl flex flex-col items-center gap-16">
         <motion.div
-          initial={{ opacity: 0, scale: 0.2 }}
-          whileInView={{ opacity: 3, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
+          
           className="bg-[#001524] border border-[#001524] p-8 rounded-xl shadow-lg w-full"
         >
           {!sent ? (
@@ -97,33 +75,7 @@ export default function Contact() {
           )}
         </motion.div>
 
-        <div className="flex flex-row items-center justify-center gap-8">
-                {icons.map((item, i) => (
-                  <motion.a
-                    key={i}
-                    href={item.link}
-                    className="text-xl md:text-2xl xl:text-5xl lg:text-4xl text-[#27818f]"
-                    initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-                     animate={{
-                      opacity: 1,
-                      scale: 1,
-                      rotate: 0,
-                    }}
-                    transition={{
-                      duration: 0.8,
-                      delay: i * 0.15,
-                      ease: "easeOut",
-                    }}
-                    whileHover={{
-                      scale: 1.3,
-                      rotate: 10,
-                      transition: { duration: 0.3 },
-                    }}
-                  >
-                    {item.icon}
-                  </motion.a>
-                ))}
-              </div>
+        <Icons />
         
       </div>
     </section>
