@@ -1,56 +1,55 @@
-import { useState, useRef, useMemo } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState, useRef } from "react";
 import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 import ProjectModal from "../components/ProjectModal";
-import ParticleNetwork from "../animate/ParticleNetwork";
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaTwitter } from "react-icons/fa";
+import Icons from "../components/Icons";
+import BgChacha from "../animate/BgChacha";
 
 export default function Works() {
   const [modalProject, setModalProject] = useState(null);
   const sectionRef = useRef(null);
-  
 
   return (
     <section
       ref={sectionRef}
       id="projets"
-      className="relative snap-start w-full 
-        bg-[#001524] flex flex-col items-center 
-        justify-center p-6 lg:px-16 py-36"
-     
+      className="min-h-screen flex flex-col justify-center px-8 py-24
+        snap-start w-full relative
+        bg-[#001524] text-[#ece5dd] items-center
+        md:px-12 lg:px-20"
     >
-      {/* <ParticleNetwork /> */}
-
-      <h2 className="text-[#ece5dd] mb-12 text-xl md:text-2xl xl:text-3xl lg:text-4xl font-semibold">
+      <h2 className="
+      text-[#ece5dd] text-xl mb-14
+                md:text-2xl xl:text-3xl lg:text-4xl font-semibold">
         Mes Projets
       </h2>
 
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-        {projects.map((project, index) => {
-          const fromLeft = index % 2 === 0;
-
-          return (
-            <motion.div
-              
-            >
-              <ProjectCard project={project} onOpen={setModalProject} />
-            </motion.div>
-          );
-        })}
+      <div className="grid grid-cols-1 md:grid-cols-2 mb-10 gap-6 w-full">
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            data-aos="fade-left"
+            data-aos-delay={index * 150} // <-- delay progressif
+            data-aos-offset="200"       // Décalage du déclenchement
+            data-aos-once="false"       // Répéter l'animation
+            data-aos-anchor-placement="center" // Point d'ancrage
+          >
+            <ProjectCard project={project} onOpen={setModalProject} />
+          </div>
+        ))}
       </div>
 
-     
       {modalProject && (
         <ProjectModal
           project={modalProject}
           onClose={() => setModalProject(null)}
         />
       )}
-
-     
+      <div className="mt-' mb-8">
+        <BgChacha />
+      </div>
       
+      <Icons />
     </section>
   );
 }

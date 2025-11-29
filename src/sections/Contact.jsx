@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icons from "../components/Icons";
+import BgChacha from "../animate/BgChacha";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -17,7 +18,7 @@ export default function Contact() {
         relative snap-start 
         bg-[#001524] text-[#ece5dd]
         flex flex-col items-center 
-        justify-center px-8 lg:px-20 py-36
+        justify-center px-8 lg:px-20 py-24
       "
     >
       <h2 className="text-[#ece5dd] mb-8 text-xl md:text-2xl xl:text-3xl lg:text-4xl font-semibold">
@@ -26,7 +27,7 @@ export default function Contact() {
 
       <p>Une question ou une idée? Utilisez ce formulaire ou les réseaux sociaux👇.</p>
 
-      <div className="w-full max-w-3xl flex flex-col items-center gap-16">
+      <div className="w-full max-w-3xl flex flex-col items-center">
 
         <div className="bg-[#001524] border border-[#001524] p-8 rounded-xl shadow-lg w-full fade-up">
           {!sent ? (
@@ -64,7 +65,7 @@ export default function Contact() {
             </div>
           )}
         </div>
-
+        <BgChacha />
         <Icons />
       </div>
     </section>

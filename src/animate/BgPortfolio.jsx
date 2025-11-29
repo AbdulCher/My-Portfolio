@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+
 
 export default function BgPortfolio() {
     return(
@@ -7,7 +7,8 @@ export default function BgPortfolio() {
             xl:text-[3rem]
             lg:text-[2.5rem]
             md:text-[1.4rem]
-            sm:text-[1rem]">
+            sm:text-[1rem]"
+            data-aos="fade-up">
             <p>Porfolio</p>
         </div>
     )

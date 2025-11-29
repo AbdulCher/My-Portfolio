@@ -7,9 +7,9 @@ const Home = () => {
   return (
     <section
       id="accueil"
-      className="snap-start min-h-screen w-full 
-        relative flex flex-col items-center gap-10 
-        px-6 md:px-12 lg:px-20 pt-28 bg-[#001524]"
+      className="min-h-screen flex flex-col justify-center px-8 py-24
+        snap-start w-full relative bg-[#001524] text-[#ece5dd] 
+        items-center md:px-12 lg:px-20"
     >
       <ParticleNetwork />
       {/* Texte + image */}
@@ -38,19 +38,22 @@ const Home = () => {
         <figure
           className="flex justify-end items-end"
           data-aos="fade-down"
+          data-aos-offset="200"       // Décalage du déclenchement
+          data-aos-once="false"       // Répéter l'animation
+          data-aos-anchor-placement="center" // Point d'ancrage
         >
           <img
             src={profileImage}
             alt="profil"
-            className="md:w-22 md:h-22 w-46 h-46 lg:w-56 lg:h-56 
+            className="w-30 h-30  md:w-40 md:h-40 lg:w-56 lg:h-56 
               object-cover rounded-full shadow-xl border-4 border-[#ff7d00]"
-            loading="lazy"
+            
           />
         </figure>
       </div>
 
       {/* Background animé */}
-      <div data-aos="fade-up">
+      <div className="mt-10 mb-10" data-aos="fade-up">
         <BgChacha />
       </div>
 

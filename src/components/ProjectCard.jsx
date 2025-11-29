@@ -2,7 +2,9 @@ export default function ProjectCard({ project, onOpen }) {
   return (
     <div
       onClick={() => onOpen(project)}
-      className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg group will-change-transform"
+      className="relative cursor-pointer overflow-hidden 
+      rounded-xl shadow-lg group will-change-transform"
+      data-aos="fade-up"
     >
 
       <img

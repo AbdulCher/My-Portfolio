@@ -8,14 +8,20 @@ export default function ProjectModal({ project, onClose }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-[#001524] border-4 border-[#ff7d00] p-6 rounded-xl max-w-4xl w-full relative shadow-lg animate-fadeIn"
+        className="bg-[#001524] border-4 border-[#ff7d00] 
+          p-6 rounded-xl max-w-4xl w-full relative shadow-lg animate-fadeIn"
+          data-aos="flip-left"
+          
+            data-aos-offset="200"       // Décalage du déclenchement
+            data-aos-once="false"       // Répéter l'animation
+            data-aos-anchor-placement="center" // Point d'ancrage
       >
-<button
+      <button
           onClick={onClose}
           className="absolute top-1 right-4 text-[#ece5dd] text-3xl"
         >
           &times;
-        </button>
+      </button>
 
         <div className="flex flex-col md:flex-row gap-6">
           
@@ -25,6 +31,7 @@ export default function ProjectModal({ project, onClose }) {
               src={project.modalimg}
               alt={project.title}
               className="w-full h-full object-cover"
+              
             />
           </div>
 

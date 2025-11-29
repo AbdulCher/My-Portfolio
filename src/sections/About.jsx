@@ -1,4 +1,4 @@
-import FondPortfolio from "../animate/BgPortfolio";
+import BgPortfolio from "../animate/BgPortfolio";
 import useAOS from "../hooks/useAOSInit";
 import Icons from "../components/Icons";
 
@@ -9,12 +9,10 @@ useAOS();
     <section
       id="apropos"
       className="
-        snap-start w-full relative
-        bg-[#001524] text-[#ece5dd]
-        flex flex-col items-center
-        px-6 md:px-12 lg:px-20 pt-30 pb-30
+        min-h-screen flex flex-col justify-center px-8 py-24
+        snap-start w-full relative bg-[#001524] text-[#ece5dd]
+        items-center md:px-12 lg:px-20
       "
-     
     >
       {/* Effet de fond optimisé */}
       {/* <ParticleNetwork /> */}
@@ -22,8 +20,8 @@ useAOS();
       <div className="w-full flex flex-col lg:flex-row gap-14 lg:gap-20">
         {/* Texte de gauche */}
         <article className="flex-1 text-left space-y-6"
-                  data-aos="fade-up">
-          <h2 className="text-[#ece5dd] mt-4 text-xl 
+            data-aos="fade-up">
+          <h2 className="text-[#ece5dd] text-xl 
                 md:text-2xl xl:text-3xl lg:text-4xl font-semibold"
                 >
             À propos de <span className="text-[#ff7d00]">ChaChaDev</span>
@@ -42,8 +40,13 @@ useAOS();
           className="flex-1 flex flex-col items-center lg:items-start w-full"
 
         >
-          <figure className="w-full pl-0 grid gap-3"
-                    data-aos="fade-up" data-aos-duration="1000">
+          <figure className="w-full pl-0 grid gap-8"
+            data-aos="fade-up" 
+            data-aos-duration="1000"
+            data-aos-offset="200"       // Décalage du déclenchement
+            data-aos-once="false"       // Répéter l'animation
+            data-aos-anchor-placement="center" // Point d'ancrage
+          >
            
               <div className="bg-[#001524]/14 p-2 rounded-lg shadow-sm shadow-[#ffecd1]/40 text-center">
                 <h3 className="text-xl">Booki</h3>
@@ -67,7 +70,7 @@ useAOS();
           <a
             href="#projets"
             className="
-              mt-6 bg-[#27818f] text-[#ece5dd]
+              mt-14 mb-10 bg-[#27818f] text-[#ece5dd]
               px-6 py-2 rounded
               hover:bg-[#ff7d00] hover:text-black transition
               self-center
@@ -79,20 +82,7 @@ useAOS();
         </article>
       </div>
 
-      <div
-        className="relative w-full h-full flex items-center justify-center"
-        data-aos="fade-up"
-      >
-        <FondPortfolio
-          className="text-[#ff7d00] font-extrabold
-          xl:text-[4rem]
-          lg:text-[3rem]
-          md:text-[2.4rem]
-          sm:text-[2rem]"
-          data-aos="fade-up"
-        />
-        
-      </div>
+  <BgPortfolio />
 <Icons />
       {/* Icônes optimisées (one-time anim + hover) */}
 

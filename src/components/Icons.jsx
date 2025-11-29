@@ -4,7 +4,7 @@ export default function Icons() {
   const icons = [
     { icon: <FaGithub />, link: "https://github.com" },
     { icon: <FaLinkedin />, link: "https://linkedin.com" },
-    { icon: <FaEnvelope />, link: "mailto:contact@tonmail.com" },
+    { icon: <FaEnvelope />, link: "mailto:abdul13un@gmail.com" },
     { icon: <FaInstagram />, link: "https://instagram.com" },
     { icon: <FaTwitter />, link: "https://twitter.com" },
   ];
