@@ -1,65 +1,122 @@
-import React from "react";
+// ============================================
+// components/ProjectModal.js - AMÉLIORÉ
+// ============================================
+import { useEffect } from "react";
 
 export default function ProjectModal({ project, onClose }) {
+  // Bloquer le scroll quand la modal est ouverte
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
+  // Fermer avec Escape
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
+
   return (
     <div
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm 
+        flex items-center justify-center z-50 p-4
+        animate-fadeIn"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
     >
       <div
         onClick={(e) => e.stopPropagation()}
         className="bg-[#001524] border-4 border-[#ff7d00] 
-          p-6 rounded-xl max-w-4xl w-full relative shadow-lg animate-fadeIn"
-          data-aos="flip-left"
-          
-            data-aos-offset="200"       // Décalage du déclenchement
-            data-aos-once="false"       // Répéter l'animation
-            data-aos-anchor-placement="center" // Point d'ancrage
+          p-6 md:p-8 rounded-xl max-w-5xl w-full 
+          relative shadow-2xl
+          max-h-[90vh] overflow-y-auto
+          animate-scaleIn"
       >
-      <button
+        {/* Bouton fermer */}
+        <button
           onClick={onClose}
-          className="absolute top-1 right-4 text-[#ece5dd] text-3xl"
+          className="absolute top-4 right-4 
+            text-[#ece5dd] hover:text-[#ff7d00]
+            text-4xl font-bold
+            transition-colors duration-300
+            hover:rotate-90 transform transition-transform"
+          aria-label="Fermer la modal"
         >
-          &times;
-      </button>
+          ×
+        </button>
 
-        <div className="flex flex-col md:flex-row gap-6">
-          
-          {/* IMAGE PLUS LARGE */}
-          <div className="w-full md:w-[45%] rounded">
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Image */}
+          <div className="w-full md:w-[45%] rounded-lg overflow-hidden">
             <img
-              src={project.modalimg}
-              alt={project.title}
+              src={project.modalimg || project.image}
+              alt={`Vue détaillée du projet ${project.title}`}
               className="w-full h-full object-cover"
-              
             />
           </div>
 
-          {/* CONTENU À DROITE */}
+          {/* Contenu */}
           <div className="flex-1">
-            <h2 className="text-4xl font-bold text-[#ece5dd] mb-2">{project.title}</h2>
-            <p className="text-[#ece5dd] mb-4">{project.description}</p>
+            <h2 
+              id="modal-title"
+              className="text-3xl md:text-4xl font-bold 
+                text-[#ece5dd] mb-4"
+            >
+              {project.title}
+            </h2>
 
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.stack.map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 border-2 border-[#ff7d00] rounded bg-[#0000000] text-[#ece5dd] text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <p className="text-[#ece5dd] text-base md:text-lg 
+              mb-6 leading-relaxed opacity-90">
+              {project.description}
+            </p>
 
-            <div className="flex gap-4">
+            {/* Technologies */}
+            {project.stack && (
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-[#ff7d00] mb-3">
+                  Technologies utilisées
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {(Array.isArray(project.stack) 
+                    ? project.stack 
+                    : [project.stack]
+                  ).map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 border-2 border-[#ff7d00] 
+                        rounded-full bg-[#ff7d00]/10 text-[#ece5dd] 
+                        text-sm font-medium
+                        hover:bg-[#ff7d00] hover:text-[#001524]
+                        transition-colors duration-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Liens */}
+            <div className="flex gap-4 flex-wrap">
               {project.demo && (
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-[#15616d] text-[#ece5dd] rounded hover:bg-[#ff7d00] hover:text-[#000000] transition"
+                  className="px-6 py-3 bg-[#27818f] text-[#ece5dd] 
+                    rounded-lg font-semibold
+                    hover:bg-[#ff7d00] hover:text-[#001524]
+                    transition-all duration-300
+                    hover:scale-105 shadow-lg"
                 >
-                  Demo
+                  Voir la démo →
                 </a>
               )}
               {project.github && (
@@ -67,14 +124,17 @@ export default function ProjectModal({ project, onClose }) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-[#15616d] text-[#ece5dd] rounded hover:bg-[#ffb703] hover:text-[#000000] transition"
+                  className="px-6 py-3 bg-[#27818f] text-[#ece5dd] 
+                    rounded-lg font-semibold
+                    hover:bg-[#ff7d00] hover:text-[#001524]
+                    transition-all duration-300
+                    hover:scale-105 shadow-lg"
                 >
-                  GitHub
+                  Voir sur GitHub →
                 </a>
               )}
             </div>
           </div>
-
         </div>
       </div>
     </div>

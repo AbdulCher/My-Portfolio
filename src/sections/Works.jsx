@@ -1,4 +1,7 @@
-import { useState, useRef } from "react";
+// ============================================
+// sections/Works.js - AMÉLIORÉ
+// ============================================
+import { useState } from "react";
 import projects from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 import ProjectModal from "../components/ProjectModal";
@@ -7,34 +10,38 @@ import BgChacha from "../animate/BgChacha";
 
 export default function Works() {
   const [modalProject, setModalProject] = useState(null);
-  const sectionRef = useRef(null);
 
   return (
     <section
-      ref={sectionRef}
       id="projets"
       className="min-h-screen flex flex-col justify-center px-8 py-24
         snap-start w-full relative
         bg-[#001524] text-[#ece5dd] items-center
         md:px-12 lg:px-20"
+      aria-labelledby="projects-title"
     >
-      <h2 className="
-      text-[#ece5dd] text-xl mb-14
-                md:text-2xl xl:text-3xl lg:text-4xl font-semibold">
+      <h2 
+        id="projects-title"
+        className="text-[#ece5dd] text-2xl mb-14
+          md:text-3xl xl:text-4xl lg:text-5xl font-semibold"
+        data-aos="fade-down"
+      >
         Mes Projets
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mb-10 gap-6 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 
+        xl:grid-cols-3 gap-6 w-full max-w-7xl z-10 mb-10">
         {projects.map((project, index) => (
           <div
             key={project.id}
-            data-aos="fade-left"
-            data-aos-delay={index * 150} // <-- delay progressif
-            data-aos-offset="200"       // Décalage du déclenchement
-            data-aos-once="false"       // Répéter l'animation
-            data-aos-anchor-placement="center" // Point d'ancrage
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+            data-aos-duration="600"
           >
-            <ProjectCard project={project} onOpen={setModalProject} />
+            <ProjectCard 
+              project={project} 
+              onOpen={setModalProject} 
+            />
           </div>
         ))}
       </div>
@@ -45,10 +52,10 @@ export default function Works() {
           onClose={() => setModalProject(null)}
         />
       )}
-      <div className="mt-' mb-8">
+
+      <div className="mt-10 mb-8 z-10">
         <BgChacha />
       </div>
-      
       <Icons />
     </section>
   );

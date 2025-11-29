@@ -1,52 +1,118 @@
-import React, { useState } from "react";
-
+// ============================================
+// components/Header.js - AMÉLIORÉ
+// ============================================
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
-const Header = () => {
+export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Détecter le scroll pour changer le style du header
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Fermer le menu mobile lors du scroll
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
+
+  const navLinks = [
+    { href: "#accueil", label: "Accueil" },
+    { href: "#apropos", label: "À propos" },
+    { href: "#projets", label: "Projets" },
+    { href: "#competences", label: "Compétences" },
+    { href: "#contact", label: "Contact" },
+  ];
 
   return (
-    <header className="text-gray-300 fixed top-0 left-0 w-full bg-gray/10 bg-opacity-80 backdrop-blur-md shadow-md z-50 border-b">
-      <nav className="max-w-6xl mx-auto flex justify-between items-center p-4">
-
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+        ${scrolled 
+          ? "bg-[#001524]/95 backdrop-blur-lg shadow-lg border-b border-[#27818f]/30" 
+          : "bg-[#001524]/80 backdrop-blur-md border-b border-transparent"
+        }`}
+    >
+      <nav className="max-w-7xl mx-auto flex justify-between items-center p-4">
         {/* LOGO */}
-       
-          <div className="hover:animate-ping">
-            <div className="text-2xl text-[#ff7d00] font-bold border-t-8 border-0">
-              <strong className="text-1xl">@</strong>/////
-            </div>
-          </div>
-        
+        <a 
+          href="#accueil" 
+          className="text-2xl text-[#ff7d00] font-bold 
+            hover:scale-110 transition-transform duration-300"
+          aria-label="Retour à l'accueil"
+        >
+          <span className="text-3xl">@</span>/////
+        </a>
 
-        {/* ----- MENU BURGER (mobile < md) ----- */}
-        <div className="md:hidden">
-          <button onClick={() => setOpen(!open)} className="text-[#ff7d00] text-3xl">
-            {open ? <FiX /> : <FiMenu />}
-          </button>
-        </div>
+        {/* MENU BURGER (mobile) */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-[#ff7d00] text-3xl z-50 
+            hover:scale-110 transition-transform"
+          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={open}
+        >
+          {open ? <FiX /> : <FiMenu />}
+        </button>
 
-        {/* ----- MENU NORMAL (≥ md) ----- */}
-        <ul className="hidden md:flex space-x-6 text-2xl text-[#ff7d00]">
-          <li><a href="#accueil" className="rounded p-1 hover:text-[#14213d] hover:bg-[#ff7d00]">Accueil</a></li>
-          <li><a href="#apropos" className="rounded p-1 hover:text-[#14213d] hover:bg-[#ff7d00]">À propos</a></li>
-          <li><a href="#projets" className="rounded p-1 hover:text-[#14213d] hover:bg-[#ff7d00]">Projets</a></li>
-          <li><a href="#competences" className="rounded p-1 hover:text-[#14213d] hover:bg-[#ff7d00]">Compétences</a></li>
-          <li><a href="#contact" className="rounded p-1 hover:text-[#14213d] hover:bg-[#ff7d00]">Contact</a></li>
+        {/* MENU DESKTOP */}
+        <ul className="hidden md:flex space-x-6 text-lg">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="text-[#ff7d00] rounded-lg px-3 py-2 
+                  hover:text-[#001524] hover:bg-[#ff7d00]
+                  transition-all duration-300
+                  font-medium"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
 
-      {/* ----- MENU OUVERT EN MOBILE ----- */}
-      {open && (
-        <ul className="md:hidden bg-[#001524]/10 backdrop-blur-lg border-t text-[#ff7d00] flex flex-col items-center space-y-4 py-6">
-          <li><a onClick={() => setOpen(false)} href="#accueil" className="hover:text-white">Accueil</a></li>
-          <li><a onClick={() => setOpen(false)} href="#apropos" className="hover:text-white">À propos</a></li>
-          <li><a onClick={() => setOpen(false)} href="#projets" className="hover:text-white">Projets</a></li>
-          <li><a onClick={() => setOpen(false)} href="#competences" className="hover:text-white">Compétences</a></li>
-          <li><a onClick={() => setOpen(false)} href="#contact" className="hover:text-white">Contact</a></li>
+      {/* MENU MOBILE */}
+      <div
+        className={`md:hidden fixed inset-0 top-16 bg-[#001524]/98 
+          backdrop-blur-xl transition-transform duration-300 ease-in-out
+          ${open ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <ul className="flex flex-col items-center justify-center 
+          h-full space-y-8 text-2xl">
+          {navLinks.map((link, index) => (
+            <li
+              key={link.href}
+              className={`transition-all duration-300 ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: `${index * 50}ms` }}
+            >
+              <a
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-[#ff7d00] hover:text-[#ece5dd] 
+                  transition-colors duration-300 font-semibold"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
-      )}
+      </div>
     </header>
   );
-};
-
-export default Header;
+}
