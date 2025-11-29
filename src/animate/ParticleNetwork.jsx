@@ -1,75 +1,108 @@
-import { useEffect, useRef } from "react";
+// ============================================
+// animate/ParticleNetwork.js - OPTIMISÉ
+// ============================================
+import { useEffect, useRef, useState } from "react";
 
-const ParticleNetwork = ({ numPoints = 50, color = "#27818f" }) => {
+export default function ParticleNetwork({ 
+  numPoints = 50, 
+  color = "#27818f",
+  lineColor = "#27818f33",
+  mouseLineColor = "#27818f66"
+}) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
+  const particlesRef = useRef([]);
+  const mouseRef = useRef({ x: null, y: null });
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
+  // Initialisation des dimensions
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    const particles = [];
-
-    // Créer les particules
-    for (let i = 0; i < numPoints; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
-        radius: Math.random() * 3 + 1,
+    const updateDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
       });
-    }
+    };
 
-    // Suivi de la souris
-    const mouse = { x: null, y: null };
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  // Gestion de la souris
+  useEffect(() => {
     const handleMouseMove = (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
+
     const handleMouseLeave = () => {
-      mouse.x = null;
-      mouse.y = null;
+      mouseRef.current = { x: null, y: null };
     };
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("resize", () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
 
-    // Fonction de dessin
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
+  // Animation des particules
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !dimensions.width) return;
+
+    const ctx = canvas.getContext("2d", { alpha: true });
+    const { width, height } = dimensions;
+
+    // Créer les particules si nécessaire
+    if (particlesRef.current.length === 0) {
+      for (let i = 0; i < numPoints; i++) {
+        particlesRef.current.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: (Math.random() - 0.5) * 1.5,
+          radius: Math.random() * 2 + 1,
+        });
+      }
+    }
+
+    const particles = particlesRef.current;
+
+    // Animation
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Dessiner particules
+      // Mettre à jour et dessiner les particules
       particles.forEach(p => {
+        // Mouvement
         p.x += p.vx;
         p.y += p.vy;
 
-        // Rebondir sur les bords
+        // Rebonds
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
+        // Dessiner particule
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = color;
         ctx.fill();
       });
 
-      // Dessiner les lignes entre particules proches
+      // Lignes entre particules proches
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
+          
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `${color}33`; // couleur transparente
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -78,14 +111,17 @@ const ParticleNetwork = ({ numPoints = 50, color = "#27818f" }) => {
       }
 
       // Lignes vers la souris
+      const mouse = mouseRef.current;
       if (mouse.x && mouse.y) {
         particles.forEach(p => {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          
+          if (dist < 150) {
             ctx.beginPath();
-            ctx.strokeStyle = `${color}66`;
+            ctx.strokeStyle = mouseLineColor;
+            ctx.lineWidth = 1;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.stroke();
@@ -99,18 +135,19 @@ const ParticleNetwork = ({ numPoints = 50, color = "#27818f" }) => {
     draw();
 
     return () => {
-      cancelAnimationFrame(animationRef.current);
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseleave", handleMouseLeave);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, [numPoints, color]);
+  }, [dimensions, color, lineColor, mouseLineColor, numPoints]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-full pointer-events-none"
+      width={dimensions.width}
+      height={dimensions.height}
+      className="absolute inset-0 pointer-events-none opacity-60"
+      aria-hidden="true"
     />
   );
-};
-
-export default ParticleNetwork;
+}

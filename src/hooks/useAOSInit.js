@@ -1,7 +1,7 @@
 // src/hooks/useAOS.js
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 /**
  * Hook pour initialiser AOS une seule fois dans l'application
