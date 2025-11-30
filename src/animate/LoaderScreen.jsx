@@ -4,7 +4,7 @@
 export default function LoaderScreen({ fadeOut }) {
   return (
     <div
-      className={`fixed inset-0 .z-[100] flex items-center justify-center 
+      className={`fixed inset-0 z-[100] flex items-center justify-center 
         bg-linear-to-br from-[#001219] via-[#001524] to-[#001219]
         transition-opacity duration-700
         ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"}`}
@@ -14,7 +14,7 @@ export default function LoaderScreen({ fadeOut }) {
       <div className="flex flex-col items-center space-y-8">
         {/* Logo animé */}
         <div className="text-[#ff7d00] text-4xl md:text-5xl font-bold flex space-x-1">
-          {["C", "h", "a", "C", "h", "a"].map((letter, i) => (
+          {["C", "h", "a", "C", "h", "a", "Dev"].map((letter, i) => (
             <span
               key={i}
               className="inline-block animate-bounce"

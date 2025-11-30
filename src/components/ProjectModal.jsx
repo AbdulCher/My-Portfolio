@@ -45,7 +45,7 @@ export default function ProjectModal({ project, onClose }) {
           className="absolute top-4 right-4 
             text-[#ece5dd] hover:text-[#ff7d00]
             text-4xl font-bold
-            transition-colors duration-300
+            'transition-colors' duration-300
             hover:rotate-90 transform transition-transform"
           aria-label="Fermer la modal"
         >
