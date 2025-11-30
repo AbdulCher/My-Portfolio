@@ -53,7 +53,7 @@ export default function Hero() {
 
         {/* Image de profil */}
         <figure
-          className="flex-shrink-0"
+          className="flex-'shrink-0'"
           data-aos="fade-down"
           data-aos-duration="1000"
           data-aos-delay="200"

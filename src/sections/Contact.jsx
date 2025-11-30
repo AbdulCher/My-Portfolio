@@ -5,6 +5,7 @@
 import { useState } from "react";
 import Icons from "../components/Icons";
 import BgChacha from "../animate/BgChacha";
+import ParticleNetwork from "../animate/ParticleNetwork";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -46,6 +47,7 @@ export default function Contact() {
         justify-center px-8 lg:px-20 py-24"
       aria-labelledby="contact-title"
     >
+      <ParticleNetwork />
       <h2 
         id="contact-title"
         className="text-[#ece5dd] mb-6 text-2xl md:text-3xl 

@@ -3,6 +3,7 @@
 // ============================================
 import BgPortfolio from "../animate/BgPortfolio";
 import Icons from "../components/Icons";
+import ParticleNetwork from "../animate/ParticleNetwork";
 
 export default function Skills() {
   const skills = {
@@ -34,6 +35,7 @@ export default function Skills() {
         md:px-12 lg:px-20"
       aria-labelledby="skills-title"
     >
+      <ParticleNetwork />
       <h2 
         id="skills-title"
         className="text-[#ece5dd] mb-12 text-2xl md:text-3xl 
